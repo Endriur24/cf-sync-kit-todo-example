@@ -1,8 +1,6 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
 import { sql } from 'drizzle-orm'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { defineCollections } from 'cf-sync-kit'
-
 /**
  * Single-tenant configuration - all data is shared.
  * For multi-tenant apps, use syncIdColumn to isolate by user/project.
@@ -31,7 +29,7 @@ export const notesTable = sqliteTable('notes', {
     .default(sql`(strftime('%s', 'now') * 1000)`),
 })
 
-export const collectionsConfig = defineCollections({
+export const collectionsConfig = {
   todos: {
     table: todosTable,
     insertSchema: createInsertSchema(todosTable).omit({ id: true, createdAt: true }),
@@ -46,4 +44,4 @@ export const collectionsConfig = defineCollections({
     selectSchema: createSelectSchema(notesTable),
     singleTenant: true,
   },
-})
+} as const
