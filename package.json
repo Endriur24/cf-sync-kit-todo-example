@@ -1,0 +1,46 @@
+{
+  "name": "cf-sync-kit-todo-example",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite build && wrangler dev",
+    "deploy": "vite build && wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:setup:local": "npm run db:generate && npm run db:migrate:local",
+    "db:migrate:local": "wrangler d1 migrations apply cf-sync-kit-todo-example-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply cf-sync-kit-todo-example-db --remote",
+    "db:studio": "drizzle-kit studio",
+    "cf-typegen": "wrangler types --env-interface Bindings"
+  },
+  "dependencies": {
+    "cf-sync-kit": "^0.10.1",
+    "@hono/react-renderer": "^1.0.1",
+    "@tanstack/react-query": "^5.99.1",
+    "drizzle-orm": "^0.45.2",
+    "drizzle-zod": "^0.8.3",
+    "hono": "^4.12.14",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "overrides": {
+    "cf-sync-kit": {
+      "drizzle-orm": "$drizzle-orm"
+    }
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.32.3",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.10",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.8",
+    "better-sqlite3": "^12.9.0",
+    "vite-ssr-components": "^0.5.2",
+    "wrangler": "^4.83.0"
+  }
+}
