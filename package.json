@@ -16,7 +16,7 @@
     "cf-typegen": "wrangler types --env-interface Bindings"
   },
   "dependencies": {
-    "cf-sync-kit": "^0.10.1",
+    "cf-sync-kit": "^0.20.0",
     "@hono/react-renderer": "^1.0.1",
     "@tanstack/react-query": "^5.99.1",
     "drizzle-orm": "^0.45.2",

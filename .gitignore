@@ -1,35 +1,32 @@
-# Dependencies
 node_modules/
-
-# Build output
+package-lock.json
 dist/
-
-# Wrangler local dev state
 .wrangler/
 
-# SQLite files
 *.sqlite
 *.sqlite3
+*.db
 
-# TypeScript build info
+migrations/
+
 tsconfig.tsbuildinfo
-
-# Generated types
 worker-configuration.d.ts
 
-# Environment files
 .env
 .env.local
+.env.*.local
 
-# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
 
-# OS
 .DS_Store
 Thumbs.db
 
-# Logs
 *.log
+npm-debug.log*
+
+.vite/
+
